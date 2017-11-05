@@ -1,0 +1,46 @@
+.task {
+  background-color: #151515;
+  margin: 8px;
+  min-height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.task:hover .task__highlight {
+  background-color: blue;
+}
+
+.task__part {
+  width: 10%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.checkbox {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.task__highlight {
+  height: 100%;
+  width: 5px;
+  display: inline-block;
+}
+
+.task__center {
+  padding: 8px 0;
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
