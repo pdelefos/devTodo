@@ -1,7 +1,8 @@
 import React from "react"
 import "./style.css"
+import ExpandingTextArea from "../expandingTextArea"
 
-const Task = ({ id, text, checked, handleChange }) => {
+const Task = ({ id, text, checked, handleChange, handleTextChange }) => {
   return (
     <div className="task">
       <div className="task__part">
@@ -10,10 +11,21 @@ const Task = ({ id, text, checked, handleChange }) => {
           type="checkbox"
           className="checkbox"
           checked={checked}
-          onChange={e => handleChange(id)}
+          onChange={evt => handleChange(id)}
         />
       </div>
-      <div className="task__center">{text}</div>
+      {/* <input
+        type="text"
+        className="task__center"
+        value={text}
+        onChange={evt => handleTextChange(id, evt.target.value)}
+			/> */}
+      <div className="task__center">
+        <ExpandingTextArea
+          text={text}
+          handleChange={evt => handleTextChange(id, evt.target.value)}
+        />
+      </div>
       <div className="task__part" />
     </div>
   )

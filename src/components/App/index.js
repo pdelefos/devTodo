@@ -7,16 +7,18 @@ class App extends React.Component {
     super(props)
     this.state = {
       tasks: [
-        { id: 1, text: "premiere task", isDone: false },
+        { id: 1, text: "premiere task", isDone: false, spendTime: 0 },
         {
           id: 2,
           text:
             "The palatable sensation we lovingly refer to as The Cheeseburger has a distinguished and illustrious history. It was born from humble roots, only to rise to well-seasoned greatness.",
-          isDone: true
+          isDone: true,
+          spendTime: 0
         }
       ]
     }
-    this.handleChange = this.handleChange.bind(this)
+    this.handleTaskState = this.handleTaskState.bind(this)
+    this.handleTextChange = this.handleTextChange.bind(this)
   }
   render() {
     return (
@@ -24,22 +26,35 @@ class App extends React.Component {
         <TasksList
           title="TODO"
           tasks={this.state.tasks.filter(task => !task.isDone)}
-          handleChange={this.handleChange}
+          handleChange={this.handleTaskState}
+          handleTextChange={this.handleTextChange}
         />
         <TasksList
           title="DONE"
           tasks={this.state.tasks.filter(task => task.isDone)}
-          handleChange={this.handleChange}
+          handleChange={this.handleTaskState}
+          handleTextChange={this.handleTextChange}
         />
       </div>
     )
   }
 
-  handleChange(taskId) {
+  handleTaskState(taskId) {
     this.setState(prevState => {
       return {
         tasks: prevState.tasks.map(task => {
           if (task.id == taskId) task.isDone = !task.isDone
+          return task
+        })
+      }
+    })
+  }
+
+  handleTextChange(taskId, newValue) {
+    this.setState(prevState => {
+      return {
+        tasks: this.state.tasks.map(task => {
+          if (task.id == taskId) task.text = newValue
           return task
         })
       }

@@ -1,9 +1,10 @@
 import React from "react"
+import "./style.css"
 import Task from "../task"
 
-const TasksList = ({ title, tasks, handleChange }) => {
+const TasksList = ({ title, tasks, handleChange, handleTextChange }) => {
   return (
-    <div>
+    <div className="task-list">
       <h2>{title}</h2>
       {tasks.map((task, index) => (
         <Task
@@ -12,6 +13,7 @@ const TasksList = ({ title, tasks, handleChange }) => {
           text={task.text}
           checked={task.isDone}
           handleChange={handleChange}
+          handleTextChange={handleTextChange}
         />
       ))}
     </div>
