@@ -8,7 +8,7 @@ const ExpandingTextArea = ({ text, handleChange }) => {
         <span>{text}</span>
         <br />
       </pre>
-      <textarea value={text} onChange={handleChange} />
+      <textarea value={text} onChange={handleChange} spellCheck={false} />
     </div>
   )
 }
