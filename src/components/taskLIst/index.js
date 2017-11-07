@@ -2,10 +2,17 @@ import React from "react"
 import "./style.css"
 import Task from "../task"
 
-const TasksList = ({ title, tasks, handleChange, handleTextChange }) => {
+const TasksList = ({
+  title,
+  tasks,
+  handleChange,
+  handleTextChange,
+  children
+}) => {
   return (
     <div className="task-list">
       <h2>{title}</h2>
+      {children}
       {tasks.map((task, index) => (
         <Task
           key={task.id}

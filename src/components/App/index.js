@@ -1,6 +1,7 @@
 import React from "react"
 import "./style.css"
 import TasksList from "../taskLIst/"
+import AddTask from "../addTask"
 
 class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends React.Component {
     }
     this.handleTaskState = this.handleTaskState.bind(this)
     this.handleTextChange = this.handleTextChange.bind(this)
+    this.addTodo = this.addTodo.bind(this)
   }
   render() {
     return (
@@ -28,7 +30,9 @@ class App extends React.Component {
           tasks={this.state.tasks.filter(task => !task.isDone)}
           handleChange={this.handleTaskState}
           handleTextChange={this.handleTextChange}
-        />
+        >
+          <AddTask handleAddTodo={this.addTodo} />
+        </TasksList>
         <TasksList
           title="DONE"
           tasks={this.state.tasks.filter(task => task.isDone)}
@@ -57,6 +61,22 @@ class App extends React.Component {
           if (task.id == taskId) task.text = newValue
           return task
         })
+      }
+    })
+  }
+
+  addTodo(value) {
+    this.setState(prevState => {
+      return {
+        tasks: [
+          ...prevState.tasks,
+          {
+            id: prevState.tasks.length + 1,
+            text: value,
+            isDone: false,
+            spendTime: 0
+          }
+        ]
       }
     })
   }
